@@ -5,7 +5,7 @@
  * Date: 03/11/2018
  * Time: 19:56
  */
-include_once "../Controllers/mysql_operations.php";
+include_once "Controllers/mysql_operations.php";
 
 $mysql_operations = new mysql_operations();
 

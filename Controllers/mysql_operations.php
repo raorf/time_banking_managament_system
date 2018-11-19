@@ -5,7 +5,7 @@
  * Date: 03/11/2018
  * Time: 20:04
  */
-include_once "../Properties/configuration.php";
+include_once "Properties/configuration.php";
 ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . dirname(__FILE__));
 
 class mysql_operations
@@ -40,19 +40,19 @@ class mysql_operations
 //UserSkills
 
     function doRegisterUserInactive($UserName, $UserEmail, $UserPassword, $UserCaptcha, $UserSkills){
-        $UserActive = false;
+        $UserActive = 0;
         $UserPassword = password_hash($UserPassword, PASSWORD_BCRYPT);
 
-        $query = "INSERT INTO user (UserName, UserEmail, UserPassword, UserCaptcha, UserActive) VALUES ('$UserName', '$UserEmail', '$UserPassword', '$UserCaptcha', '$UserActive')";
+        $query = "INSERT INTO User (UserName, UserEmail, UserPassword, UserCaptcha, UserActive) VALUES ('$UserName', '$UserEmail', '$UserPassword', '$UserCaptcha', '$UserActive')";
         if ($this->conn->query($query) === TRUE) {
             print "User inserted into table succesfully";
         } else {
             print "Error inserting user into database: ";
             echo "Error: " . $query . "<br>" . $this->conn->error;
         }
-        $userId = $this->getMaxIdValue("user", "UserID");
+        $userId = $this->getMaxIdValue("User", "UserID");
 
-        $query = "INSERT INTO userskill (UserSkill, UserID) VALUES ('$UserSkills', '$userId')";
+        $query = "INSERT INTO UserSkill (UserSkill, UserID) VALUES ('$UserSkills', '$userId')";
         if ($this->conn->query($query) === TRUE) {
             print "User skill(s) inserted into table succesfully";
         } else {
@@ -80,7 +80,7 @@ class mysql_operations
     }
 
     function checkAccountActivation($UserName){
-        $query = "SELECT UserActive FROM user WHERE UserName='$UserName'";
+        $query = "SELECT UserActive FROM User WHERE UserName='$UserName'";
         $result = $this->conn->query($query);
         $returnable = null;
         if ($result->num_rows > 0) {
@@ -95,7 +95,7 @@ class mysql_operations
     }
 
     function getPassword($UserName){
-        $query = "SELECT UserPassword FROM user WHERE UserName='$UserName'";
+        $query = "SELECT UserPassword FROM User WHERE UserName='$UserName'";
         $result = $this->conn->query($query);
         $returnable = null;
         if ($result->num_rows > 0) {
@@ -121,7 +121,7 @@ class mysql_operations
     }
 
     function activateUser($UserName, $UserCaptcha){
-        $query = "UPDATE user SET UserActive=1 WHERE UserName = '$UserName' AND UserCaptcha = '$UserCaptcha'";
+        $query = "UPDATE User SET UserActive=1 WHERE UserName = '$UserName' AND UserCaptcha = '$UserCaptcha'";
         if ($this->conn->query($query) === TRUE) {
             return true;
         } else {

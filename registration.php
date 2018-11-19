@@ -1,6 +1,6 @@
 <?php
-include_once "../Models/do_registration.php";
-include_once "../Captcha/generate_captcha.php";
+include_once "Models/do_registration.php";
+include_once "Captcha/generate_captcha.php";
 $generate_captcha = new generate_captcha();
 $GeneratedCaptcha = $generate_captcha->randomKey();
 $_SESSION['GeneratedCaptcha'] = $GeneratedCaptcha;
@@ -23,7 +23,7 @@ $_SESSION['GeneratedCaptcha'] = $GeneratedCaptcha;
     <br><br>
     Skills: <input type="text" name="UserSkills" value="<?=$_SESSION['UserSkills']?>"><span class="error">* <?php echo $UserSkillsErr;?></span>
     <br><br>
-    <img src="../Captcha/render_captcha.php?s=FFFFFF_00_173_50&t=<?=$GeneratedCaptcha?>" alt="Error while generating captcha text...">
+    <img src="Captcha/render_captcha.php?s=FFFFFF_00_173_50&t=<?=$GeneratedCaptcha?>" alt="Error while generating captcha text...">
     <br><br>
     Please enter text from image in the form below (case sensitive):
     <input type="text" name="UserCaptcha"><span class="error">* <?php echo $UserCaptchaErr;?></span>

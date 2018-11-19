@@ -3,9 +3,9 @@
 
     ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . dirname(__FILE__));
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $servername = "127.0.0.1";
+    $username = "ma6912b";
+    $password = "ma6912b";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password);
@@ -18,17 +18,17 @@
 
 
     //Create DB if doesn't exist
-    $sql = "CREATE DATABASE IF NOT EXISTS time_banking_management_system";
+    $sql = "CREATE DATABASE IF NOT EXISTS `mdb_ma6912b`";
     if ($conn->query($sql) === TRUE) {
         echo "Database created successfully";
-        $sql = "USE time_banking_management_system";
+        $sql = "USE mdb_ma6912b";
         $conn->query($sql);
     } else {
         echo "Error creating database: " . $conn->error;
     }
 
     if (!$conn->connect_error) {
-        $create_tables = file_get_contents('../Resources/create_tables.sql');
+        $create_tables = file_get_contents('Resources/create_tables.sql');
         if ($conn->multi_query($create_tables) === TRUE) {
             echo "Tables created successfully";
         } else {

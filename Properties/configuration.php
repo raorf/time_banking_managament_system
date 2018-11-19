@@ -9,9 +9,13 @@
 class configuration
 {
     public const MYSQL_HOSTNAME = "localhost";
-    public const MYSQL_USERNAME = "root";
-    public const MYSQL_PASSWORD = "";
-    public const MYSQL_DATABASENAME = "time_banking_management_system";
+//    public const MYSQL_USERNAME = "root";
+//    public const MYSQL_PASSWORD = "";
+    public const MYSQL_USERNAME = "ma6912b";
+    public const MYSQL_PASSWORD = "ma6912b";
+
+//    public const MYSQL_DATABASENAME = "time_banking_management_system";
+    public const MYSQL_DATABASENAME = "mdb_ma6912b";
 
     public const CAPTCHA_LENGTH = 1;
     public const PORTAL_NAME = "Time Banking Management System";

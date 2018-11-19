@@ -6,8 +6,8 @@
  * Time: 00:53
  */
 
-include_once "../Controllers/mysql_operations.php";
-include_once "../Models/do_cookiemanagement.php";
+include_once "Controllers/mysql_operations.php";
+include_once "Models/do_cookiemanagement.php";
 session_start();
 
 //Variable initialisation

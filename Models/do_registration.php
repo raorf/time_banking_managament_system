@@ -12,8 +12,8 @@
 //UserActive
 //UserSkills
 
-include_once "../Controllers/mysql_operations.php";
-include_once  "../Models/do_email.php";
+include_once "Controllers/mysql_operations.php";
+include_once  "Models/do_email.php";
 
 session_start();
 

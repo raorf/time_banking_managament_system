@@ -5,10 +5,10 @@
  * Date: 03/11/2018
  * Time: 22:43
  */
-include_once "../Properties/configuration.php";
-include_once "../Models/do_login.php";
-include_once "../Captcha/generate_captcha.php";
-include_once "../Models/do_cookiemanagement.php";
+include_once "Properties/configuration.php";
+include_once "Models/do_login.php";
+include_once "Captcha/generate_captcha.php";
+include_once "Models/do_cookiemanagement.php";
 
 $generate_captcha = new generate_captcha();
 $GeneratedCaptcha = $generate_captcha->randomKey();
@@ -32,7 +32,7 @@ $cook = new do_cookiemanagement();
 <br><br>
 Password: <input type="password" name="UserPassword" value="<?=$_SESSION['UserPassword']?>"><span class="error">* <?php echo $UserPasswordErr;?></span>
 <br><br>
-<img src="../Captcha/render_captcha.php?s=FFFFFF_00_173_50&t=<?=$GeneratedCaptcha?>" alt="Error while generating captcha text...">
+<img src="Captcha/render_captcha.php?s=FFFFFF_00_173_50&t=<?=$GeneratedCaptcha?>" alt="Error while generating captcha text...">
 <br><br>
 Please enter text from image in the form below (case sensitive):
 <br><br>

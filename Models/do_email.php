@@ -1,6 +1,6 @@
 <?php
 
-include_once "../Properties/configuration.php";
+include_once "Properties/configuration.php";
 
 class do_email{
     function constructActivationLink($UserCaptcha, $UserName){
