@@ -8,7 +8,7 @@
 
 class configuration
 {
-    public const MYSQL_HOSTNAME = "localhost";
+    public const MYSQL_HOSTNAME = "mysql.cms.gre.ac.uk";
 //    public const MYSQL_USERNAME = "root";
 //    public const MYSQL_PASSWORD = "";
     public const MYSQL_USERNAME = "ma6912b";
@@ -17,7 +17,7 @@ class configuration
 //    public const MYSQL_DATABASENAME = "time_banking_management_system";
     public const MYSQL_DATABASENAME = "mdb_ma6912b";
 
-    public const CAPTCHA_LENGTH = 1;
+    public const CAPTCHA_LENGTH = 5;
     public const PORTAL_NAME = "Time Banking Management System";
     public const PORTAL_PHONE = "07146178490";
     public const PORTAL_EMAIL = "tbms@gre.ac.uk";

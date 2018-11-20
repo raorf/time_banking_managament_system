@@ -13,9 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $successful = $mysql_operations->activateUser($_GET["UserName"], $_GET["UserCaptcha"]);
     if ($successful){
         echo "User ".$_GET["UserName"]." is activated";
-        header('Location: ' . "../Views/login.php");
+        header('Location: ' . "login.php");
     } else {
         echo "Activation is not successful";
-        header('Location: ' . "../Views/index.php");
+        header('Location: ' . "index.php");
     }
 }

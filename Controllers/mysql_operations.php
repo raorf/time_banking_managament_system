@@ -111,7 +111,7 @@ class mysql_operations
 
     function doVerifyPassword($UserName, $UserPassword){
         $db_password = $this->getPassword($UserName);
-        print "Verifying passwords: ".$UserPassword." and ".$db_password;
+//        print "Verifying passwords: ".$UserPassword." and ".$db_password;
         return password_verify($UserPassword, $db_password);
     }
 

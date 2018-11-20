@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['UserCaptcha'] = null;
         $_SESSION['UserSkills'] = null;
 
-        header('Location: '."../Views/login.php");
+//        header('Location: '."Views/login.php");
     }
 }
 

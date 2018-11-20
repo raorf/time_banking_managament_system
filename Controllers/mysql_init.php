@@ -1,9 +1,7 @@
 <?php
+//    ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . dirname(__FILE__));
 
-
-    ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . dirname(__FILE__));
-
-    $servername = "127.0.0.1";
+    $servername = "mysql.cms.gre.ac.uk";
     $username = "ma6912b";
     $password = "ma6912b";
 

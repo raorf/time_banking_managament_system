@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $cm = new do_cookiemanagement();
                 $cm->setUserNameToCookies($_POST['UserName']);
                 $_SESSION['UserLoggedIn'] = true;
-                header('Location: ' . "../Views/index.php");
+                header('Location: ' . "index.php");
             }
         } else{
             $UserNameErr = "Username or password is incorrect";
