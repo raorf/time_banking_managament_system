@@ -42,6 +42,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $UserNameErr = "Only letters are allowed";
             $formValid = false;
         }
+
+    }
+
+
+    $mysqlOps = new mysql_operations();
+
+    if ($mysqlOps -> userNameExists($_SESSION['UserName'])) {
+        $formValid = false;
+        $UserNameErr = "Username already exists, please select a different one.";
     }
 
     if (empty($_POST["UserEmail"])) {
@@ -100,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['UserCaptcha'] = null;
         $_SESSION['UserSkills'] = null;
 
-//        header('Location: '."Views/login.php");
+        header('Location: '."login.php");
     }
 }
 

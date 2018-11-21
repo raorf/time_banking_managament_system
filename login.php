@@ -27,6 +27,8 @@ $cook = new do_cookiemanagement();
 </head>
 <body>
 
+<p><a href="registration.php">Registration</a></p>
+
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     Name: <input type="text" name="UserName" value="<?=$cook->getUserNameFromCookies();?>"><span class="error">* <?php echo $UserNameErr;?></span>
 <br><br>

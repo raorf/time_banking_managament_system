@@ -75,10 +75,6 @@ class mysql_operations
         return $returnable;
     }
 
-    function doActivateUser($UserCaptcha, $UserEmail){
-
-    }
-
     function checkAccountActivation($UserName){
         $query = "SELECT UserActive FROM User WHERE UserName='$UserName'";
         $result = $this->conn->query($query);
@@ -130,4 +126,27 @@ class mysql_operations
             return false;
         }
     }
+
+    function userNameExists($UserName){
+        $query = "SELECT UserID FROM mdb_ma6912b.User WHERE UserName='$UserName'";
+        $result = $this->conn->query($query);
+        $returnable = null;
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo $row["UserID"];
+                $returnable =  $row["UserID"];
+            }
+        } else {
+            fwrite(STDOUT, "Error in userNameExists()" . "\n");
+        }
+        if ($returnable > 0){
+            fwrite(STDOUT, "User exists" . "\n");
+            return true;
+        } else {
+            fwrite(STDOUT, "User does not exist" . "\n");
+            return false;
+        }
+    }
+
 }
