@@ -12,12 +12,20 @@ class do_cookiemanagement
         if(isset($_COOKIE['UserName'])){
             return $_COOKIE['UserName'];
         } else {
-            return "";
+            return "No username set to cookies";
         }
     }
 
     function setUserNameToCookies($UserName){
-            $_COOKIE['UserName'] = $UserName;
-            return true;
+        setcookie("UserName", $UserName, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+        if(!isset($_COOKIE["UserName"])) {
+            echo "Cookie named UserName is not set!";
+        } else {
+            echo "Cookie UserName is set!<br>";
+            echo "Value is: " . $_COOKIE["UserName"];
+        }
+
+        return true;
         }
 }

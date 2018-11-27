@@ -8,6 +8,8 @@
 
 include_once "Controllers/mysql_operations.php";
 include_once "Models/do_cookiemanagement.php";
+include_once "../Controllers/mysql_operations.php";
+include_once "../Models/do_cookiemanagement.php";
 session_start();
 
 //Variable initialisation
@@ -77,6 +79,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $cm = new do_cookiemanagement();
                 $cm->setUserNameToCookies($_POST['UserName']);
                 $_SESSION['UserLoggedIn'] = true;
+                echo "Succefully logged in ".$_POST['UserName'];
+                sleep(1);
                 header('Location: ' . "index.php");
             }
         } else{

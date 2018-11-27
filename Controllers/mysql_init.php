@@ -12,13 +12,11 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    echo "Connected successfully";
 
 
     //Create DB if doesn't exist
     $sql = "CREATE DATABASE IF NOT EXISTS `mdb_ma6912b`";
     if ($conn->query($sql) === TRUE) {
-        echo "Database created successfully";
         $sql = "USE mdb_ma6912b";
         $conn->query($sql);
     } else {
@@ -28,7 +26,6 @@
     if (!$conn->connect_error) {
         $create_tables = file_get_contents('Resources/create_tables.sql');
         if ($conn->multi_query($create_tables) === TRUE) {
-            echo "Tables created successfully";
         } else {
             echo "Error creating tables: " . $conn->error;
         }

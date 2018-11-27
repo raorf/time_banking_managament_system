@@ -38,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $UserName = test_input($_POST["UserName"]);
         // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z]*$/",$UserName)) {
-            $UserNameErr = "Only letters are allowed";
+        if (!preg_match("/^[0-9a-zA-Z]*$/",$UserName)) {
+            $UserNameErr = "Only letters and numbers are allowed";
             $formValid = false;
         }
 
@@ -61,6 +61,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // check if e-mail address is well-formed
         if (!filter_var($UserEmail, FILTER_VALIDATE_EMAIL)) {
             $UserEmailErr = "Invalid email format";
+            $formValid = false;
+        }
+    }
+
+    if (empty($_POST["UserSkills"])) {
+        $UserSkillsErr = "Name is required";
+        $formValid = false;
+    } else {
+        $UserName = test_input($_POST["UserSkills"]);
+        if (!preg_match("/^[0-9a-zA-Z ,;]*$/",$UserSkills)) {
+            $UserSkillsErr = "Only letters and numbers are allowed";
             $formValid = false;
         }
     }

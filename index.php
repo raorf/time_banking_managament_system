@@ -5,19 +5,17 @@
  * Time: 23:10
  */
 include_once "Controllers/mysql_init.php";
+include_once "Models/do_cookiemanagement.php";
+include_once "../Controllers/mysql_init.php";
+include_once "../Models/do_cookiemanagement.php";
 session_start();
 
-if ($_SESSION['UserLoggedIn'] == true){
-    echo "Welcome back.";
-    echo "<p><a href=\"Models/do_logout.php\">Log out</a></p>";
-} else {
-    echo "<p><a href=\"login.php\">Log in</a></p>";
-    echo "<p><a href=\"registration.php\">Register</a></p>";
-}
+$cm = new do_cookiemanagement();
+echo "<h1>Welcome to member zone, ".$cm -> getUserNameFromCookies()."</h1>";
+
 ?>
-<html>
 
+<?php
+include_once  "navigationbar.php";
+?>
 
-
-
-</html>

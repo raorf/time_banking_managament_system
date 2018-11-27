@@ -16,7 +16,7 @@ class configuration
 
     public const MYSQL_DATABASENAME = "mdb_ma6912b";
 
-    public const CAPTCHA_LENGTH = 5;
+    public const CAPTCHA_LENGTH = 1;
     public const PORTAL_NAME = "Time Banking Management System";
     public const PORTAL_PHONE = "07146178490";
     public const PORTAL_EMAIL = "ma6912b@gre.ac.uk";

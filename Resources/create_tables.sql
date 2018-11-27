@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS `TaskImage` (
-  `TaskImageID` INT NOT NULL AUTO_INCREMENT,
-  `TaskImage` BINARY,
-  `TaskID` INT,
+ `TaskImageID` INT NOT NULL AUTO_INCREMENT,
+ `TaskID` INT,
+ `TaskImage` VARCHAR(255),
   PRIMARY KEY (`TaskImageID`),
   KEY `FK` (`TaskID`)
-);
+  );
 
 CREATE TABLE IF NOT EXISTS `UserTimeBank` (
   `UserTimeBankID` INT NOT NULL AUTO_INCREMENT,
@@ -22,20 +22,23 @@ CREATE TABLE IF NOT EXISTS `UserSkill` (
   KEY `FK` (`UserID`)
 );
 
-CREATE TABLE IF NOT EXISTS `TaskSkill` (
-  `TaskSkillID` INT NOT NULL AUTO_INCREMENT,
-  `TaskSkill` VARCHAR(255),
-  `TaskID` INT,
-  PRIMARY KEY (`TaskSkillID`),
-  KEY `FK` (`TaskID`)
-);
+-- CREATE TABLE IF NOT EXISTS `TaskSkill` (
+--   `TaskSkillID` INT NOT NULL AUTO_INCREMENT,
+--   `TaskSkill` VARCHAR(255),
+--   `TaskID` INT,
+--   PRIMARY KEY (`TaskSkillID`),
+--   KEY `FK` (`TaskID`)
+-- );
+
 
 CREATE TABLE IF NOT EXISTS `Task` (
   `TaskID` INT NOT NULL AUTO_INCREMENT,
-  `TaskType` VARCHAR(255),
-  `TaskCompleted` BOOLEAN,
+  `TaskUserName` VARCHAR(255),
+  `TaskActive` BOOLEAN,
+  `TaskDescription` VARCHAR(255),
   `TaskLocation` VARCHAR(255),
-  `TaskCredit` INT,
+  `TaskRequiredSkills` VARCHAR(255),
+  `TaskCredit` VARCHAR(255),
   PRIMARY KEY (`TaskID`)
 );
 
@@ -49,10 +52,10 @@ CREATE TABLE IF NOT EXISTS `User` (
   PRIMARY KEY (`UserID`)
 );
 
-CREATE TABLE IF NOT EXISTS `UserTask` (
-  `UserTaskID` INT NOT NULL AUTO_INCREMENT,
-  `UserID` INT,
-  `TaskID` INT,
-  PRIMARY KEY (`UserTaskID`),
-  KEY `FK` (`UserID`, `TaskID`)
-);
+-- CREATE TABLE IF NOT EXISTS `UserTask` (
+--   `UserTaskID` INT NOT NULL AUTO_INCREMENT,
+--   `UserID` INT,
+--   `TaskID` INT,
+--   PRIMARY KEY (`UserTaskID`),
+--   KEY `FK` (`UserID`, `TaskID`)
+-- );
