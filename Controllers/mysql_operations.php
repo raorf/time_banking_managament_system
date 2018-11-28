@@ -32,6 +32,79 @@ class mysql_operations
         $this->conn->query($sql);
     }
 
+    function doGetUserDetails($UserName){
+        $sql = "
+            SELECT User.UserID, User.UserName, User.UserEmail, UserSkill.UserSkill
+            FROM UserSkill 
+            INNER JOIN User ON UserSkill.UserID = User.UserID
+            WHERE UserName='$UserName';
+        ";
+
+        $result = $this->conn->query($sql);
+        $returnable = null;
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<h3>Id: ".$row["UserID"]."<br>Name: ".$row["UserName"]."<br>Email: ".$row["UserEmail"]."<br>Skills: ".$row["UserSkill"]."</h3>";
+            }
+        } else {
+            echo "Unable to get user details...";
+        }
+
+
+    }
+
+    function doSearchTasks($Skill="", $Location="", $Sort=""){
+        $sql = "SELECT TaskID, TaskActive, TaskUserName, TaskDescription, TaskLocation, TaskRequiredSkills, TaskCredit FROM Task WHERE TaskActive=1 AND TaskLocation LIKE '%$Location%' AND TaskRequiredSkills LIKE '%$Skill%'";
+
+        if ($Sort == 'Location'){
+            $sql .= " ORDER BY TaskLocation";
+        }
+
+        if ($Sort == 'Skill'){
+            $sql .= " ORDER BY TaskRequiredSkills";
+        }
+
+        if ($Sort == 'Id'){
+            $sql .= " ORDER BY TaskID";
+        }
+
+        if ($Sort == 'Active'){
+            $sql .= " ORDER BY TaskActive";
+        }
+
+        if ($Sort == 'UserName'){
+            $sql .= " ORDER BY TaskUserName";
+        }
+
+        if ($Sort == 'Credit'){
+            $sql .= " ORDER BY TaskCredit";
+        }
+
+        $result = $this->conn->query($sql);
+
+
+        if ($result->num_rows > 0) {
+            echo "<table class=\"table table-striped\">";    // output data of each row
+            echo "<tr><th><a href=\"?Sort=Id\">Id</a></th><th><a href=\"?Sort=Active\">Active</a></th><th><a href=\"?Sort=UserName\">User name</a></th><th>Description</th><th><a href=\"?Sort=Location\">Location</a></th><th><a href=\"?Sort=Skill\">Required skills</a></th><th><a href=\"?Sort=Credit\">Credit</a></th><th>Actions</th></tr>";
+            while($row = $result->fetch_assoc()) {
+                echo "<tr><td>" . $row["TaskID"].
+                    "</td><td>" . $row["TaskActive"].
+                    "</td><td>" . $row["TaskUserName"].
+                    "</td><td>" . $row["TaskDescription"].
+                    "</td><td>" . $row["TaskLocation"].
+                    "</td><td>" . $row["TaskRequiredSkills"].
+                    "</td><td>" . $row["TaskCredit"].
+                    "</td><td><a href=\"viewuserdetails.php?UserName=".$row["TaskUserName"]."\">View details</a>".
+                    "</td></tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "0 results";
+        }
+        $this->conn->close();
+    }
+
     function doUpdateTask($TaskID, $TaskActive, $TaskDescription, $TaskLocation, $TaskRequiredSkills, $TaskCredit){
         $sql = "UPDATE Task SET TaskActive='$TaskActive', TaskDescription='$TaskDescription', TaskLocation='$TaskLocation', TaskRequiredSkills='$TaskRequiredSkills', TaskCredit='$TaskCredit' WHERE TaskID='$TaskID'";
 
@@ -173,6 +246,7 @@ class mysql_operations
             print "Error inserting user into database: ";
             echo "Error: " . $query . "<br>" . $this->conn->error;
         }
+
         $userId = $this->getMaxIdValue("User", "UserID");
 
         $query = "INSERT INTO UserSkill (UserSkill, UserID) VALUES ('$UserSkills', '$userId')";

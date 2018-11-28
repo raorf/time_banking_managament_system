@@ -7,8 +7,8 @@
  */
 
 include_once "Controllers/mysql_operations.php";
-include_once "Models/do_cookiemanagement.php";
 include_once "../Controllers/mysql_operations.php";
+include_once "Models/do_cookiemanagement.php";
 include_once "../Models/do_cookiemanagement.php";
 
 ?>

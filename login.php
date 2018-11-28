@@ -31,8 +31,8 @@ include_once  "navigationbar.php";
 Name:
 <div>
 <input type="text" name="UserName" value="<?=$cook->getUserNameFromCookies();?>"><span class="error">* <?php echo $UserNameErr;?></span>
-    <br><br>
-    Password:
+<br><br>
+Password:
 <div>
 <input type="password" name="UserPassword" value="<?=$_SESSION['UserPassword']?>"><span class="error">* <?php echo $UserPasswordErr;?></span>
 <br><br>
