@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aleks
- * Date: 04/11/2018
- * Time: 00:53
- */
 
 include_once "Controllers/mysql_operations.php";
 include_once "Models/do_cookiemanagement.php";

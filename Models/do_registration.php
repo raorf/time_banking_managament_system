@@ -1,16 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * Date: 02/11/2018
- * Time: 20:09
- */
 
-//UserName
-//UserEmail
-//UserPassword
-//UserCaptcha
-//UserActive
-//UserSkills
 
 include_once "Controllers/mysql_operations.php";
 include_once  "Models/do_email.php";
@@ -113,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $reg = new do_email();
         $activation_link = $reg->constructActivationLink($_SESSION['UserCaptcha'], $_SESSION['UserName']);
-        $reg->sendActivationEmail($_SESSION['UserEmail'], $activation_link);
+        $reg->sendActivationEmail($_SESSION['UserEmail'], $activation_link, $_SESSION['UserCaptcha']);
 
         $_SESSION['UserEmail'] = null;
         $_SESSION['UserPassword'] = null;

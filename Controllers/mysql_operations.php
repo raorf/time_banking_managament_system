@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aleks
- * Date: 03/11/2018
- * Time: 20:04
- */
+
 include_once "Properties/configuration.php";
 include_once "../Properties/configuration.php";
 ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . dirname(__FILE__));
@@ -315,6 +310,17 @@ class mysql_operations
 
     function activateUser($UserName, $UserCaptcha){
         $query = "UPDATE User SET UserActive=1 WHERE UserName = '$UserName' AND UserCaptcha = '$UserCaptcha'";
+        if ($this->conn->query($query) === TRUE) {
+            return true;
+        } else {
+            print "Error activating user";
+            echo "Error: " . $query . "<br>" . $this->conn->error;
+            return false;
+        }
+    }
+
+    function activateUserNoName($UserCaptcha){
+        $query = "UPDATE User SET UserActive=1 WHERE UserCaptcha = '$UserCaptcha'";
         if ($this->conn->query($query) === TRUE) {
             return true;
         } else {

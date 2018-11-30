@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aleksandrsk
- * Date: 11/25/18
- * Time: 10:21 PM
- */
 
 include_once "do_checkloggedinstatus.php";
 include_once "../Controllers/mysql_operations.php";

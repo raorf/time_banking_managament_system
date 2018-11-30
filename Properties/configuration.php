@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aleks
- * Date: 03/11/2018
- * Time: 20:10
- */
 
 class configuration
 {
@@ -16,7 +10,7 @@ class configuration
 
     public const MYSQL_DATABASENAME = "mdb_ma6912b";
 
-    public const CAPTCHA_LENGTH = 1;
+    public const CAPTCHA_LENGTH = 5;
     public const PORTAL_NAME = "Time Banking Management System";
     public const PORTAL_PHONE = "07146178490";
     public const PORTAL_EMAIL = "ma6912b@gre.ac.uk";

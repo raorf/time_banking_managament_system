@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aleks
- * Date: 04/11/2018
- * Time: 01:13
- */
 
 class do_cookiemanagement
 {

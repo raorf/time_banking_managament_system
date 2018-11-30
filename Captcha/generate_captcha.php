@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aleks
- * Date: 02/11/2018
- * Time: 17:45
- */
+
 include_once "Properties/configuration.php";
 
 class generate_captcha

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aleksandrsk
- * Date: 11/24/18
- * Time: 9:09 PM
- */
 
 include_once "../Controllers/mysql_operations.php";
 include_once "Controllers/mysql_operations.php";

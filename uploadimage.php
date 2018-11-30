@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aleksandrsk
- * Date: 11/24/18
- * Time: 9:11 PM
- */
+
 session_start();
 
 ?>
